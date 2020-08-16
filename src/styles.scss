@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@mixin flexElement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
