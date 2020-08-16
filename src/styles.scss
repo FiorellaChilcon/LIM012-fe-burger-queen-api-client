@@ -1,11 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@mixin flexElement {
+body {
+  margin: 0;
+}
+@font-face {
+  font-family: 'NATS';
+  src: url('./nats/NATS-Regular.ttf');
+}
+@mixin flexElement($direction) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $direction;
   justify-content: center;
   align-items: center;
 }
 @mixin size($width, $height) {
   width: $width;
   height: $height;
+}
+@mixin whiteText($size) {
+  font-family: 'NATS';
+  font-size: $size;
+  color: white;
 }
