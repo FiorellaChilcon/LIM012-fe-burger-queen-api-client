@@ -1,0 +1,40 @@
+@import "../../../styles.scss";
+header {
+  background-color: #170E22;
+  @include size(100%, 80px);
+  @include flexElement(row);
+  color: #FFE600;
+  font-size: 30px;
+  font-family: 'NATS';
+}
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  @include size(100%, 100px);
+  a {
+    letter-spacing: 5px;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 10px;
+    @include whiteText(18px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .menu {
+    background-color: #D53512;
+  }
+  .orders {
+    background-color: #006787;
+  }
+  .products {
+    background-color: #39037E;
+  }
+  .users {
+    background-color: #038C29;
+  }
+}
+main {
+  min-height: calc(100vh - 180px);
+  background-color: #E5E5E5;
+}
