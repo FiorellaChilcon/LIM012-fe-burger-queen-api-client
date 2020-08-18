@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -9,19 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
   emailErrorMessage: string;
   passwordErrorMessage: string;
   url: string = 'http://ec2-13-58-43-131.us-east-2.compute.amazonaws.com';
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
-    });
   }
 
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  });
   onSubmit() {
     this.passwordErrorMessage = '';
     this.emailErrorMessage = '';
@@ -51,3 +50,4 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+

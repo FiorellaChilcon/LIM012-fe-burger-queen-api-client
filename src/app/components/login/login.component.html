@@ -6,5 +6,6 @@
     <p *ngIf="passwordErrorMessage">{{passwordErrorMessage}}</p>
     <input type="password" placeholder="Password" formControlName="password" required>
     <button>Login</button>
+    <p class="json">{{loginForm.value | json}}</p>
   </form>
 </div>
