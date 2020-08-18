@@ -1,1 +1,11 @@
-<p>menu works!</p>
+<main>
+  <div class="sub-nav">
+    <div (click)="onSelect(section)" *ngFor="let section of menu">{{section}}</div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <section>
+    <form></form>
+  </section> -->
+</main>

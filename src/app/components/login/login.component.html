@@ -1,10 +1,10 @@
 <div id="login">
   <h1>Burger Queen</h1>
-  <form id="login-form">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>
-      <a routerLink="/home" routerLinkActive="active">Login</a>
-    </button>
+  <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <p *ngIf="emailErrorMessage">{{emailErrorMessage}}</p>
+    <input type="email" placeholder="Email" formControlName="email" required>
+    <p *ngIf="passwordErrorMessage">{{passwordErrorMessage}}</p>
+    <input type="password" placeholder="Password" formControlName="password" required>
+    <button>Login</button>
   </form>
 </div>

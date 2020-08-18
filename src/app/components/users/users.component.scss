@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+.sub-nav {
+  div, select {
+    background-color: #038C29;
+    @include cardStyle;
+    @include whiteText(18px);
+  }
+  select {
+    -webkit-appearance: none;
+  }
+}

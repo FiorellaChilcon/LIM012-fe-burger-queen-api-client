@@ -1,0 +1,8 @@
+@import "../../../styles.scss";
+.sub-nav {
+  div {
+    background-color: #39037E;
+    @include cardStyle;
+    @include whiteText(18px);
+  }
+}
