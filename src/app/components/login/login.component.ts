@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { BurgerQueenDataService } from '../../data-service/burger-queen-data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   emailErrorMessage: string;
   passwordErrorMessage: string;
-  url: string = 'http://ec2-13-58-43-131.us-east-2.compute.amazonaws.com';
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private router: Router, public burgerQueenDataService: BurgerQueenDataService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.passwordErrorMessage = '';
     this.emailErrorMessage = '';
     if (!this.loginForm.invalid) {
-      this.http.post<any>(`${this.url}/auth`, this.loginForm.value).subscribe(
+      this.burgerQueenDataService.getAuthToken(this.loginForm.value).subscribe(
         data => {
           console.log(data.token);
           this.router.navigate(['/home']);
@@ -50,4 +49,3 @@ export class LoginComponent implements OnInit {
     }
   }
 }
-
