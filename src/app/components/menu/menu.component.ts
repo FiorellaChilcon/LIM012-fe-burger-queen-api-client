@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class MenuComponent implements OnInit {
   readonly menu: string[] = ['breakfast', 'lunch - dinner'];
-  constructor(private router: Router) { }
+  menuSection: string;
+  constructor(private router: Router, private activatedrouter: ActivatedRoute) { }
   addOrderForm = new FormGroup({
     client: new FormControl('', [Validators.required, Validators.email]),
     products: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -18,6 +19,7 @@ export class MenuComponent implements OnInit {
   }
   onSelect(section: string) {
     this.router.navigate(['home/menu', section]);
+    this.menuSection = section;
   }
 
 }

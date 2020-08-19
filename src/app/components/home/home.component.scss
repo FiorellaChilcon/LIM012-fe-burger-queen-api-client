@@ -2,10 +2,19 @@
 header {
   background-color: #170E22;
   @include size(100%, 80px);
-  @include flexElement(row);
-  color: #FFE600;
-  font-size: 30px;
-  font-family: 'NATS';
+  @include flexElement(column);
+  h1 {
+    color: #FFE600;
+    font-size: 30px;
+    font-family: 'NATS';
+  }
+  i {
+    align-self: flex-end;
+    position: absolute;
+    color: rgb(255, 238, 5);
+    font-size: 25px;
+    right: 10px;
+  }
 }
 nav {
   display: flex;

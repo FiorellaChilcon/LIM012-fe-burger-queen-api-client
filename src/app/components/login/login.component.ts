@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { BurgerQueenDataService } from '../../data-service/burger-queen-data.service';
+import { AuthService } from '../../data-service/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   emailErrorMessage: string;
   passwordErrorMessage: string;
-  constructor(private router: Router, public burgerQueenDataService: BurgerQueenDataService) { }
+
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -24,10 +25,17 @@ export class LoginComponent implements OnInit {
     this.passwordErrorMessage = '';
     this.emailErrorMessage = '';
     if (!this.loginForm.invalid) {
-      this.burgerQueenDataService.getAuthToken(this.loginForm.value).subscribe(
+      this.authService.getAuthToken(this.loginForm.value).subscribe(
         data => {
-          console.log(data.token);
-          this.router.navigate(['/home']);
+          this.authService.getUser(this.loginForm.value.email, data.token).subscribe(
+            resp => {
+              const userRole = resp.roles.admin;
+              localStorage.setItem('userAdminRole', userRole);
+              localStorage.setItem('token', data.token);
+              localStorage.setItem('email', resp.email);
+              this.router.navigate(['/home']);
+            }
+          )
         },
         err => {
           if (err.status === 403) {

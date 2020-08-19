@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BurgerQueenDataService } from './data-service/burger-queen-data.service';
+import { AuthService } from './data-service/auth/auth.service';
+import { ProductsService } from './data-service/products/products.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +33,10 @@ import { from } from 'rxjs';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [BurgerQueenDataService],
+  providers: [
+    AuthService,
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
