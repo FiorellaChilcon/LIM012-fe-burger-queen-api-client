@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BurgerQueenDataService } from './data-service/burger-queen-data.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { MenuSectionComponent } from './components/menu-section/menu-section.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { MenuSectionComponent } from './components/menu-section/menu-section.com
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [BurgerQueenDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
