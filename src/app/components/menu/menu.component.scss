@@ -6,19 +6,19 @@
     @include whiteText(18px);
   }
 }
-// section {
-//   width: 100%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-around;
-//   div {
-//     width: 45%;
-//     min-width: 500px;
-//   }
-//   form {
-//     min-height: 300px;
-//     width: 45%;
-//     background-color: #444242;
-//     border-radius: 10px;
-//   }
-// }
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  div {
+    width: 45%;
+    min-width: 500px;
+  }
+  form {
+    min-height: 300px;
+    width: 45%;
+    background-color: #444242;
+    border-radius: 10px;
+  }
+}

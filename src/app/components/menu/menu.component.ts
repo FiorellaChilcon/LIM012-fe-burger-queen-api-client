@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   readonly menu: string[] = ['breakfast', 'lunch - dinner'];
   constructor(private router: Router) { }
-
+  addOrderForm = new FormGroup({
+    client: new FormControl('', [Validators.required, Validators.email]),
+    products: new FormControl('', [Validators.required, Validators.minLength(5)]),
+  });
   ngOnInit(): void {
   }
   onSelect(section: string) {

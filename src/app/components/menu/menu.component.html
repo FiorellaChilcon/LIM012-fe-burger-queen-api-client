@@ -2,10 +2,10 @@
   <div class="sub-nav">
     <div (click)="onSelect(section)" *ngFor="let section of menu">{{section}}</div>
   </div>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
-  <!-- <section>
-    <form></form>
-  </section> -->
+  <section>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+    <form [formGroup]="addOrderForm"></form>
+  </section>
 </main>
