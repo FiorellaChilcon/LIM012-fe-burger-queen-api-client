@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@import "src/styles.scss";
 .sub-nav {
   div {
     background-color: #D53512;
@@ -9,20 +9,30 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
-
 section {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  div {
+  .children-container {
     width: 50%;
     min-width: 500px;
   }
-  form {
+  .shopping-cart {
+    padding: 10px;
     min-height: 300px;
     width: 45%;
     background-color: #444242;
     border-radius: 10px;
+    div {
+      span {
+        @include whiteText(16px);
+        padding: 5px;
+      }
+    }
+    p {
+      @include whiteText(16px);
+      padding: 5px;
+    }
   }
 }

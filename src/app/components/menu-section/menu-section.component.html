@@ -1,7 +1,5 @@
 <div class="food-item-container">
-  <div class="card" *ngFor="let product of products" (click)="onSelect(product)">
+  <div class="card" *ngFor="let product of filteredProducts" (click)="onSelect(product)">
     <p>{{product.name}} - ${{product.price}}</p>
   </div>
-  <p>{{newOrder | json}}</p>
-  <p>hola</p>
 </div>

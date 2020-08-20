@@ -4,9 +4,14 @@
     </div>
   </div>
   <section>
-    <div>
+    <div class="children-container">
       <router-outlet></router-outlet>
     </div>
-    <form [formGroup]="addOrderForm"></form>
+    <div class="shopping-cart">
+      <div *ngFor="let item of order">
+        <span>{{item.qty}}</span><span> {{item.name}}</span><span> ${{item.price}}</span>
+      </div>
+      <p *ngIf="total !== 0">TOTAL {{total}}</p>
+    </div>
   </section>
 </main>

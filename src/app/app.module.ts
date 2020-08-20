@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthService } from './data-service/auth/auth.service';
 import { ProductsService } from './data-service/products/products.service';
+import { OrdersService } from './data-service/orders/orders.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +36,8 @@ import { from } from 'rxjs';
   ],
   providers: [
     AuthService,
-    ProductsService
+    ProductsService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })

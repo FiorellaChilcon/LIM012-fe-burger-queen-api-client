@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from '../../data-service/auth/auth.service';
+import { AuthService } from 'src/app/data-service/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   emailErrorMessage: string;
   passwordErrorMessage: string;
-
+  token: string;
   constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
@@ -26,22 +26,22 @@ export class LoginComponent implements OnInit {
     this.emailErrorMessage = '';
     if (!this.loginForm.invalid) {
       this.authService.getAuthToken(this.loginForm.value).subscribe(
-        data => {
-          this.authService.getUser(this.loginForm.value.email, data.token).subscribe(
-            resp => {
-              const userRole = resp.roles.admin;
-              localStorage.setItem('userAdminRole', userRole);
-              localStorage.setItem('token', data.token);
-              localStorage.setItem('email', resp.email);
-              this.router.navigate(['/home']);
-            }
-          )
-        },
+        data => { this.token = data.token },
         err => {
           if (err.status === 403) {
             return this.passwordErrorMessage = 'Sorry, your password was incorrect';
           }
           return this.emailErrorMessage = 'The email you entered doesn\'t belong to an account';
+        }
+      );
+      this.authService.getUser(this.loginForm.value.email, this.token).subscribe(
+        resp => {
+          const userRole = resp.roles.admin;
+          localStorage.setItem('userAdminRole', userRole);
+          localStorage.setItem('token', this.token);
+          localStorage.setItem('email', resp.email);
+          this.router.navigate(['/home']);
+          console.log(this.token);
         }
       );
     } else {

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LoginData } from 'src/app/interfaces/interfaces';
 
-interface LoginData {
-  email: string;
-  password: string;
-}
 @Injectable({
   providedIn: 'root'
 })

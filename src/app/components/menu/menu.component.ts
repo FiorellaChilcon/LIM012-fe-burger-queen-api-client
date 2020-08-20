@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/data-service/products/products.service';
+import { ordersProduct } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-menu',
@@ -10,12 +11,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class MenuComponent implements OnInit {
   readonly menu: string[] = ['breakfast', 'lunch - dinner'];
   menuSection: string;
-  constructor(private router: Router, private activatedrouter: ActivatedRoute) { }
-  addOrderForm = new FormGroup({
-    client: new FormControl('', [Validators.required, Validators.email]),
-    products: new FormControl('', [Validators.required, Validators.minLength(5)]),
-  });
+  total: number;
+  constructor(private router: Router, private productsService: ProductsService) { }
+  order: ordersProduct[];
   ngOnInit(): void {
+    this.productsService.sharedProducts.subscribe((data) => {
+      this.order = data;
+    });
+    this.productsService.sharedTotal.subscribe((num) => {
+      this.total = num;
+    });
   }
   onSelect(section: string) {
     this.router.navigate(['home/menu', section]);
